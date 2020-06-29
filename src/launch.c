@@ -8,7 +8,7 @@ int     ft_launch(char **args)
     pid = fork();
     if(pid == 0)
     {
-        if(execvp(args[0], args) == -1)
+        if(execve(args[0] = "/bin/sh", args, NULL) == -1)
         {
             ft_putstr("minishell: command not found: ");
             ft_putendl(args[0]);
