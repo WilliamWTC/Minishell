@@ -3,7 +3,7 @@
 int ft_execute(char **args)
 {
   int i;
-  char *builtin_str[] = {"cd","exit","echo","setenv","unsetenv"};
+  char *builtin_str[] = {"cd","exit","echo"};
   int (*builtin_func[]) (char **) = {&ft_cd, &ft_exit, &ft_echo};
 
   if (args[0] == NULL)

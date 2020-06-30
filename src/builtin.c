@@ -1,7 +1,7 @@
 # include "minishell.h"
 
 int num_builtins() {
-  char *builtin_str[] = {"cd","exit","echo","setenv","unsetenv"};
+  char *builtin_str[] = {"cd","exit","echo"};
   return sizeof(builtin_str) / sizeof(char *);
 }
 

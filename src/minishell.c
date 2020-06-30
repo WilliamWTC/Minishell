@@ -8,7 +8,7 @@ int main(void)
 
   while (status)
    {
-    ft_putstr("$ ");
+    ft_putstr("> ");
     line = ft_gnl();
     // add_history(line);
     args = ft_split(line);

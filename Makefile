@@ -13,8 +13,6 @@ SRC_NAME =  minishell.c \
 			get_next_line.c \
 			launch.c \
 			read.c \
-			setenv.c \
-			unsetenv.c \
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(SRC_NAME:.c=.o))
@@ -23,7 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
-	@gcc $(CFLAGS) $(OBJ) $(INC) -L $(LIBFT) -lft -o $(NAME) -lreadline
+	@gcc $(CFLAGS) $(OBJ) $(INC) -L $(LIBFT) -lft -o $(NAME)
 	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
