@@ -1,24 +1,66 @@
 # include "minishell.h"
 
+char *builtin_str[] = {"help", "cd", "env","exit","echo"};
+
 int num_builtins() {
-  char *builtin_str[] = {"cd","exit","echo"};
   return sizeof(builtin_str) / sizeof(char *);
 }
 
-int ft_cd(char **args)
+int     ft_help(char **args, char **envp)
 {
+    int i;
+
+    i = 0;
+    (void)args;
+    (void)envp;
+    ft_putendl("Type program names and arguments.");
+    ft_putendl("The following are built in:");
+    while(i < num_builtins())
+    {
+        ft_putstr(" ");
+        ft_putendl(builtin_str[i]);
+        i++;
+    }
+    return (1);
+}
+
+int ft_cd(char **args, char **envp)
+{
+  (void)envp;
   if (args[1] == NULL)
-    ft_putstr("bash: expected argument to \"cd\"\n");
+    ft_putstr("minishell: expected argument to \"cd\"\n");
   else 
     if (chdir(args[1]) != 0)
-      ft_putstr("bash: No such file or directory\n");
+      ft_putstr("minishell: No such file or directory\n");
   
   return 1;
 }
 
-int ft_exit(char **args)
+int ft_env(char **args, char **envp)
 {
-  if (*args)
-    return 0;
+  int i;
+
+  (void)args;
+  i = 0;
+  while(envp[i] != NULL)
+  {
+    ft_putendl(envp[i]);
+    i++;
+  }
+  return 1;
+}
+
+int ft_setenv()
+{
+  return 1;
+}
+
+int ft_unsetenv()
+{
+  return 1;
+}
+
+int ft_exit()
+{
   return 0;
 }

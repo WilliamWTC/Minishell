@@ -20,18 +20,23 @@ int		ft_echo(char **str)
 	i = 1;
 	if (!str[1])
 		ft_putstr("\n");
-	while (str[i])
-	{
-		j = -1;
-		while (str[i][++j] != '\0')
+	else if(str[1][0] == '$')
+		ft_putendl("Hello World!");
+	else
+	{	
+		while (str[i])
 		{
-			if (str[i][j] == '\"')
-				str[i][j] = 127;
+			j = -1;
+			while (str[i][++j] != '\0')
+			{
+				if (str[i][j] == '\"')
+					str[i][j] = 127;
+			}
+			ft_echostr(str[i++]);
+			ft_putstr(" ");
 		}
-		ft_echostr(str[i++]);
-		ft_putstr(" ");
+		ft_putstr("\n");
 	}
-	ft_putstr("\n");
 
     return 1;
 }

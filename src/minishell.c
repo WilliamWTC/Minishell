@@ -1,19 +1,22 @@
 # include "minishell.h"
 
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
   char *line;
   char **args;
   int status;
 
+  if(argc < 1)
+    return (-1);
+  (void)argv;
+  status = 1;
   while (status)
-   {
-    ft_putstr("> ");
+  {
+    ft_putstr("$> ");
     line = ft_gnl();
-    // add_history(line);
     args = ft_split(line);
     free(line);
-    status = ft_execute(args);
+    status = ft_execute(args, envp);
 
     ft_strdel(args);
   }
