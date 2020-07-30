@@ -15,6 +15,7 @@ int    ft_help();
 int    ft_cd();
 int    ft_ls();
 int    ft_env();
+int    ft_setenv();
 int    ft_exit();
 int    ft_echo();
 int    num_builtins();

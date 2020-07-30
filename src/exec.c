@@ -3,8 +3,13 @@
 int ft_execute(char **args, char **envp)
 {
   int i;
-  char *builtin_str[] = {"help", "cd", "env", "exit","echo"};
-  int (*builtin_func[]) (char **, char **) = {&ft_help, &ft_cd, &ft_env, &ft_exit, &ft_echo};
+  char *builtin_str[] = {"help", "cd", "env", "setenv", "exit","echo"};
+  int (*builtin_func[]) (char **, char **) = {&ft_help,
+                                              &ft_cd,
+                                              &ft_env,
+                                              &ft_setenv,
+                                              &ft_exit,
+                                              &ft_echo};
 
   if (args[0] == NULL)
     return 1;

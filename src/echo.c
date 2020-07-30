@@ -12,16 +12,36 @@ static void	ft_echostr(const char *str)
 	}
 }
 
-int		ft_echo(char **str)
+void	ft_search_env(char *var, char **envp)
+{
+	int i;
+	char **env;
+
+	i = 0;
+	while(envp[i] != NULL)
+	{
+		env = ft_strsplit(envp[i], '=');
+		if(ft_strcmp(var, env[0]) == 0)
+			ft_putstr(env[1]);
+		i++;
+	}
+}
+
+int		ft_echo(char **str, char **envp)
 {
 	int i;
 	int j;
+	char **var;
 
 	i = 1;
 	if (!str[1])
 		ft_putstr("\n");
 	else if(str[1][0] == '$')
-		ft_putendl("Hello World!");
+	{
+		var = ft_strsplit(str[1], '$');
+		ft_search_env(var[0], envp);
+		ft_putstr("\n");
+	}
 	else
 	{	
 		while (str[i])

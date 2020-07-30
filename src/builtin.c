@@ -1,6 +1,6 @@
 # include "minishell.h"
 
-char *builtin_str[] = {"help", "cd", "env","exit","echo"};
+char *builtin_str[] = {"help", "cd", "env", "setenv","exit","echo"};
 
 int num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
@@ -50,13 +50,18 @@ int ft_env(char **args, char **envp)
   return 1;
 }
 
-int ft_setenv()
+int ft_setenv(char **args, char **envp)
 {
+  (void)args;
+  (void)envp;
+  ft_putendl("Set env variable.");
   return 1;
 }
 
-int ft_unsetenv()
+int ft_unsetenv(char **args, char **envp)
 {
+  (void)args;
+  (void)envp;
   return 1;
 }
 
