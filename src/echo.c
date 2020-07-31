@@ -8,7 +8,8 @@ static void	ft_echostr(const char *str)
 	while (str[++i] != '\0')
 	{
 		if (ft_isprint(str[i]))
-			write(1, &str[i], 1);
+			ft_putchar(str[i]);
+			//write(1, &str[i], 1);
 	}
 }
 
@@ -27,7 +28,7 @@ void	ft_search_env(char *var, char **envp)
 	}
 }
 
-int		ft_echo(char **str, char **envp)
+char	**ft_echo(char **str, char **envp)
 {
 	int i;
 	int j;
@@ -57,6 +58,5 @@ int		ft_echo(char **str, char **envp)
 		}
 		ft_putstr("\n");
 	}
-
-    return 1;
+    return envp;
 }

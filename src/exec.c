@@ -4,30 +4,29 @@ char *builtin_str[] = {
   "help",
   "cd",
   "env",
-  "unsetenv",
   "setenv",
-  "echo"
+  "unsetenv",
+  "echo",
 };
 
-int (*builtin_func[]) (char **, char **) = {
+char **(*builtin_func[]) (char **, char **) = {
   &ft_help,
   &ft_cd,
   &ft_env,
   &ft_setenv,
   &ft_unsetenv,
-  &ft_echo
+  &ft_echo,
 };
 
 int num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
 }
 
-int     ft_help(char **args, char **envp)
+char  **ft_help(char **args, char **envp)
 {
     int i;
 
     (void)args;
-    (void)envp;
     i = 0;
     ft_putendl("Minnishel, version 1.0.0.");
     ft_putendl("The following are built in:");
@@ -38,13 +37,12 @@ int     ft_help(char **args, char **envp)
         ft_putendl(builtin_str[i]);
         i++;
     }
-    return (1);
+    return envp;
 }
 
 int ft_execute(char **args, char **envp)
 {
   int i;
-  int res;
   char **new_envp;
 
   if (args[0] == NULL)
@@ -60,12 +58,12 @@ int ft_execute(char **args, char **envp)
     }
     else if(ft_strcmp(args[0], builtin_str[i]) == 0)
     {
-      res = (*builtin_func[i])(args, envp);
-      ft_putnbr(res);
-      ft_putstr("\n");
-      return res;
+      new_envp = (*builtin_func[i])(args, envp);
+      return 1;
     }
+    else
+      new_envp = envp;
     i++;
   }
-  return ft_launch(args, envp);
+  return ft_launch(args, new_envp);
 }
