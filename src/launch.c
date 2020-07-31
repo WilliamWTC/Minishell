@@ -5,18 +5,6 @@ int     ft_launch(char **args, char **envp)
     pid_t   pid;
     int     status;
 
-    /*
-    char *envp[] =
-    {
-        "HOME=/",
-        "PATH=/bin:/usr/bin",
-        "TZ=UTC0",
-        "USER=beelzebub",
-        "LOGNAME=tarzan",
-        NULL
-    };
-    */
-
     pid = fork();
     if(pid == 0)
     {
