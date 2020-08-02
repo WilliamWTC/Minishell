@@ -18,8 +18,7 @@ char **ft_env(char **args, char **envp)
   i = 0;
   while(envp[i] != NULL)
   {
-    if(ft_strcmp(envp[i], " ") != 0)
-      ft_putendl(envp[i]);
+    ft_putendl(envp[i]);
     i++;
   }
   return envp;
@@ -32,18 +31,46 @@ char **ft_setenv(char **args, char **envp)
   return envp;
 }
 
+int ft_numenv(char **envp)
+{
+  int i;
+
+  i = 0;
+  while(envp[i] != NULL)
+    i++;
+  return i;
+}
+
 char **ft_unsetenv(char **args, char **envp)
 {
   int i;
   char **env;
+  int size;
+  int position = 0;
 
-  i = 0;
-  while(envp[i] != NULL)
+  size = ft_numenv(envp);
+  if(args[1])
   {
-    env = ft_strsplit(envp[i], '=');
-		if(ft_strcmp(args[1], env[0]) == 0)
-			ft_strcpy(envp[i], " ");
-		i++;
+    i = 0;
+    while(envp[i] != NULL)
+    {
+      env = ft_strsplit(envp[i], '=');
+      if(ft_strcmp(args[1], env[0]) == 0)
+      {
+        position = i + 1;
+        break;
+      }
+      i++;
+    }
+  }
+  if(position > 0)
+  {
+    i = position - 1;
+    while(i < size - 1)
+    {
+      envp[i] = envp[i + 1];
+      i++;
+    }
   }
   return envp;
 }

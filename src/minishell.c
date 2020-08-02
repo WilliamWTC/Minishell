@@ -12,7 +12,7 @@ int main(int argc, char **argv, char **envp)
   status = 1;
   while (status)
   {
-    ft_putstr("\033[1m\033[34m minishel> \033[0m");
+    ft_putstr("\033[1m\033[34mminishell $> \033[0m");
     line = ft_gnl();
     args = ft_split(line);
     free(line);
@@ -22,4 +22,3 @@ int main(int argc, char **argv, char **envp)
   }
   return EXIT_SUCCESS;
 }
-
