@@ -9,7 +9,6 @@ static void	ft_echostr(const char *str)
 	{
 		if (ft_isprint(str[i]))
 			ft_putchar(str[i]);
-			//write(1, &str[i], 1);
 	}
 }
 
