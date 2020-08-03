@@ -33,17 +33,6 @@ int ft_array_size(char **envp)
   return i;
 }
 
-int ft_handle_setenv(char *name, char *value)
-{
-  char *es;
-
-  es = malloc(strlen(name) + strlen(value) + 2);
-  strcpy(es, name);
-  strcat(es, "=");
-  strcat(es, value);
-  return (putenv(es) != 0) ? -1 : 0;
-}
-
 int ft_setenv(char **args)
 {
   char *es;
