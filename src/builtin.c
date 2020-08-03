@@ -33,60 +33,47 @@ int ft_array_size(char **envp)
   return i;
 }
 
-int ft_handle_setenv(char **args)
+int ft_handle_setenv(char *name, char *value)
 {
-  (void)args;
-  return 1;
+  char *es;
+
+  es = malloc(strlen(name) + strlen(value) + 2);
+  strcpy(es, name);
+  strcat(es, "=");
+  strcat(es, value);
+  return (putenv(es) != 0) ? -1 : 0;
 }
 
 int ft_setenv(char **args)
 {
-  /*
-  int i;
-  int envp_size;
-  char **new_envp;
+  char *es;
 
-  envp_size = ft_array_size(envp);
-  new_envp = (char **)malloc(sizeof(char *) * (envp_size + 1));
-  i = 0;
-  while(i < envp_size)
-  {
-    new_envp[i] = ft_strdup(envp[i]);
-    free(envp[i]);
-    i++;
-  }
-  new_envp[envp_size] = ft_strdup(args[1]);
-  new_envp[envp_size + 1] = NULL;
-  return new_envp;
-  */
- setenv(args[1], args[2], 1);
- return 1;
-}
-
-void ft_handle_unsetenv(char *env)
-{
-  char **ep, **sp;
-  size_t len;
-
-  len = strlen(env);
-
-  for (ep = environ; *ep != NULL; )
-  {
-    if (strncmp(*ep, env, len) == 0 && (*ep)[len] == '=')
-    {
-      for (sp = ep; *sp != NULL; sp++)
-        *sp = *(sp + 1);
-    }
-    else
-    {
-      ep++;
-    }
-  }
+  ft_unsetenv(args);
+  es = ft_memalloc(strlen(args[1]) + strlen(args[2]) + 2);
+  ft_strcpy(es, args[1]);
+  ft_strcat(es, "=");
+  ft_strcat(es, args[2]);
+  putenv(es);
+  return 1;
 }
 
 int ft_unsetenv(char **args)
 {
-  ft_handle_unsetenv(args[1]);
+  char **ep;
+  char **sp;
+  int len;
+
+  len = (int)ft_strlen(args[1]);
+
+  ep = environ;
+  while(*ep != NULL)
+  {
+    if (ft_strncmp(*ep, args[1], len) == 0 && (*ep)[len] == '=')
+      for (sp = ep; *sp != NULL; sp++)
+        *sp = *(sp + 1);
+    else
+      ep++;
+  }
   return 1;
 }
 

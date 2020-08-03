@@ -22,5 +22,7 @@ int    ft_echo();
 int    ft_exit();
 int    num_builtins();
 
+char	*ft_search_env();
+
 int    ft_launch();
 int    ft_execute();
