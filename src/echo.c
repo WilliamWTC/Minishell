@@ -12,22 +12,22 @@ static void	ft_echostr(const char *str)
 	}
 }
 
-void	ft_search_env(char *var, char **envp)
+void	ft_search_env(char *var)
 {
 	int i;
 	char **env;
 
 	i = 0;
-	while(envp[i] != NULL)
+	while(environ[i] != NULL)
 	{
-		env = ft_strsplit(envp[i], '=');
+		env = ft_strsplit(environ[i], '=');
 		if(ft_strcmp(var, env[0]) == 0)
 			ft_putstr(env[1]);
 		i++;
 	}
 }
 
-char	**ft_echo(char **str, char **envp)
+int	ft_echo(char **str)
 {
 	int i;
 	int j;
@@ -39,7 +39,7 @@ char	**ft_echo(char **str, char **envp)
 	else if(str[1][0] == '$')
 	{
 		var = ft_strsplit(str[1], '$');
-		ft_search_env(var[0], envp);
+		ft_search_env(var[0]);
 		ft_putstr("\n");
 	}
 	else
@@ -57,5 +57,5 @@ char	**ft_echo(char **str, char **envp)
 		}
 		ft_putstr("\n");
 	}
-    return envp;
+    return 1;
 }

@@ -11,12 +11,15 @@ char   *ft_gnl();
 char   **ft_split();
 int    get_next_line();
 
-char    **ft_help();
-char    **ft_cd();
-char    **ft_env();
-char    **ft_setenv();
-char    **ft_unsetenv();
-char    **ft_echo();
+extern char **environ;
+
+int    ft_help();
+int    ft_cd();
+int    ft_env();
+int    ft_setenv();
+int    ft_unsetenv();
+int    ft_echo();
+int    ft_exit();
 int    num_builtins();
 
 int    ft_launch();

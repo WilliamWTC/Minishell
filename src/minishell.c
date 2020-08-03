@@ -1,14 +1,11 @@
 # include "minishell.h"
 
-int main(int argc, char **argv, char **envp)
+int main()
 {
   char *line;
   char **args;
   int status;
 
-  if(argc < 1)
-    return (-1);
-  (void)argv;
   status = 1;
   while (status)
   {
@@ -16,7 +13,7 @@ int main(int argc, char **argv, char **envp)
     line = ft_gnl();
     args = ft_split(line);
     free(line);
-    status = ft_execute(args, envp);
+    status = ft_execute(args);
 
     ft_strdel(args);
   }

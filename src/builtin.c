@@ -1,27 +1,26 @@
 # include "minishell.h"
 
-char **ft_cd(char **args, char **envp)
+int ft_cd(char **args)
 {
   if (args[1] == NULL)
     ft_putstr("minishell: expected argument to \"cd\"\n");
   else 
     if (chdir(args[1]) != 0)
       ft_putstr("minishell: No such file or directory\n");
-  return envp;
+  return 1;
 }
 
-char **ft_env(char **args, char **envp)
+int ft_env()
 {
   int i;
 
-  (void)args;
   i = 0;
-  while(envp[i] != NULL)
+  while(environ[i] != NULL)
   {
-    ft_putendl(envp[i]);
+    ft_putendl(environ[i]);
     i++;
   }
-  return envp;
+  return 1;
 }
 
 int ft_array_size(char **envp)
@@ -34,8 +33,15 @@ int ft_array_size(char **envp)
   return i;
 }
 
-char **ft_setenv(char **args, char **envp)
+int ft_handle_setenv(char **args)
 {
+  (void)args;
+  return 1;
+}
+
+int ft_setenv(char **args)
+{
+  /*
   int i;
   int envp_size;
   char **new_envp;
@@ -52,38 +58,40 @@ char **ft_setenv(char **args, char **envp)
   new_envp[envp_size] = ft_strdup(args[1]);
   new_envp[envp_size + 1] = NULL;
   return new_envp;
+  */
+ setenv(args[1], args[2], 1);
+ return 1;
 }
 
-char **ft_unsetenv(char **args, char **envp)
+void ft_handle_unsetenv(char *env)
 {
-  int i;
-  char **env;
-  int size;
-  int position = 0;
+  char **ep, **sp;
+  size_t len;
 
-  size = ft_array_size(envp);
-  if(args[1])
+  len = strlen(env);
+
+  for (ep = environ; *ep != NULL; )
   {
-    i = 0;
-    while(envp[i] != NULL)
+    if (strncmp(*ep, env, len) == 0 && (*ep)[len] == '=')
     {
-      env = ft_strsplit(envp[i], '=');
-      if(ft_strcmp(args[1], env[0]) == 0)
-      {
-        position = i + 1;
-        break;
-      }
-      i++;
+      for (sp = ep; *sp != NULL; sp++)
+        *sp = *(sp + 1);
+    }
+    else
+    {
+      ep++;
     }
   }
-  if(position > 0)
-  {
-    i = position - 1;
-    while(i < size - 1)
-    {
-      envp[i] = envp[i + 1];
-      i++;
-    }
-  }
-  return envp;
+}
+
+int ft_unsetenv(char **args)
+{
+  ft_handle_unsetenv(args[1]);
+  return 1;
+}
+
+int ft_exit()
+{
+  ft_putendl("exit");
+  return 0;
 }

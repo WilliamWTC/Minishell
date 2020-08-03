@@ -1,6 +1,6 @@
 # include "minishell.h"
 
-int     ft_launch(char **args, char **envp)
+int     ft_launch(char **args)
 {
     pid_t   pid;
     int     status;
@@ -8,7 +8,7 @@ int     ft_launch(char **args, char **envp)
     pid = fork();
     if(pid == 0)
     {
-        if(execve(args[0], args, envp) == -1)
+        if(execve(args[0], args, environ) == -1)
         {
             ft_putstr("minishell: command not found: ");
             ft_putendl(args[0]);
