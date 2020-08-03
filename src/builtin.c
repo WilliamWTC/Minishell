@@ -46,6 +46,7 @@ char **ft_setenv(char **args, char **envp)
   while(i < envp_size)
   {
     new_envp[i] = ft_strdup(envp[i]);
+    free(envp[i]);
     i++;
   }
   new_envp[envp_size] = ft_strdup(args[1]);
