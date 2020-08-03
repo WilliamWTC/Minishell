@@ -35,6 +35,7 @@ int ft_array_size(char **envp)
 
 int ft_setenv(char **args)
 {
+  /*
   char *es;
 
   ft_unsetenv(args);
@@ -43,6 +44,23 @@ int ft_setenv(char **args)
   ft_strcat(es, "=");
   ft_strcat(es, args[2]);
   putenv(es);
+  return 1;
+  */
+  int i;
+  int environ_len;
+  char **env;
+
+  environ_len = ft_array_size(environ);
+  env = (char **)malloc(sizeof(char *) * (environ_len + 1));
+  i = 0;
+  while(environ[i] != NULL)
+  {
+    env[i] = ft_strdup(environ[i]);
+    i++;
+  }
+  env[environ_len] = ft_strdup(args[1]);
+  env[environ_len + 1] = NULL;
+  environ = env;
   return 1;
 }
 
