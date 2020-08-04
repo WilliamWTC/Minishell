@@ -19,6 +19,7 @@ int    ft_env();
 int    ft_setenv();
 int    ft_unsetenv();
 int    ft_echo();
+int    ft_clear();
 int    ft_exit();
 int    num_builtins();
 

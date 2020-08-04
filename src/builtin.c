@@ -84,6 +84,13 @@ int ft_unsetenv(char **args)
   return 1;
 }
 
+int ft_clear()
+{
+  const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
+  write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 11);
+  return 1;
+}
+
 int ft_exit()
 {
   ft_putendl("exit");

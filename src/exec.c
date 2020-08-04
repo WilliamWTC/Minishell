@@ -7,6 +7,7 @@ char *builtin_str[] = {
   "echo",
   "setenv",
   "unsetenv",
+  "clear",
   "exit",
 };
 
@@ -17,6 +18,7 @@ int (*builtin_func[]) (char **) = {
   &ft_echo,
   &ft_setenv,
   &ft_unsetenv,
+  &ft_clear,
   &ft_exit,
 };
 
