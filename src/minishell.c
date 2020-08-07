@@ -14,7 +14,6 @@ int main()
     args = ft_split(line);
     free(line);
     status = ft_execute(args);
-
     ft_strdel(args);
   }
   return EXIT_SUCCESS;
