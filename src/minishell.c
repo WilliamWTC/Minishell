@@ -1,5 +1,18 @@
 # include "minishell.h"
 
+void ft_free_double_char(char **ss)
+{
+  int i;
+
+  i = 0;
+  while(ss[i] != 0)
+  {
+    free(ss[i]);
+    i++;
+  }
+  free(ss);
+}
+
 int main()
 {
   char *line;
@@ -12,9 +25,9 @@ int main()
     ft_putstr("\033[1m\033[34mminishell $> \033[0m");
     line = ft_gnl();
     args = ft_split(line);
-    free(line);
     status = ft_execute(args);
-    ft_strdel(args);
+    free(line);
+    ft_free_double_char(args);
   }
-  return EXIT_SUCCESS;
+  return 0;
 }

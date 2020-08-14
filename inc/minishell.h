@@ -7,9 +7,10 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-char   *ft_gnl();
-char   **ft_split();
-int    get_next_line();
+char    *ft_gnl();
+char    **ft_split();
+int     get_next_line();
+void    ft_free_double_char();
 
 extern char **environ;
 

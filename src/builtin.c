@@ -35,23 +35,12 @@ int ft_array_size(char **envp)
 
 int ft_setenv(char **args)
 {
-  /*
-  char *es;
-
-  ft_unsetenv(args);
-  es = ft_memalloc(strlen(args[1]) + strlen(args[2]) + 2);
-  ft_strcpy(es, args[1]);
-  ft_strcat(es, "=");
-  ft_strcat(es, args[2]);
-  putenv(es);
-  return 1;
-  */
   int i;
   int environ_len;
   char **env;
 
   environ_len = ft_array_size(environ);
-  env = (char **)malloc(sizeof(char *) * (environ_len + 1));
+  env = (char **)malloc(sizeof(char *) * (environ_len + 3));
   i = 0;
   while(environ[i] != NULL)
   {
@@ -86,8 +75,7 @@ int ft_unsetenv(char **args)
 
 int ft_clear()
 {
-  const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
-  write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 11);
+  ft_putstr("\e[1;1H\e[2J");
   return 1;
 }
 
