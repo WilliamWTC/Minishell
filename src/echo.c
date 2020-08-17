@@ -12,19 +12,21 @@ static void	ft_echostr(const char *str)
 	}
 }
 
-char	*ft_search_env(char *var)
+char *ft_getenv(char *s)
 {
-	int i;
-	char **env;
-
-	i = 0;
-	while(environ[i] != NULL)
+	size_t len;
+	
+	len = ft_strlen(s);
+	for(int i = 0; environ[i] != NULL; i++)
 	{
-		env = ft_strsplit(environ[i], '=');
-		if(ft_strcmp(var, env[0]) == 0)
-			return env[1];
-		i++;
+		if(ft_strncmp(environ[i], s, len) == 0)
+			return ft_strsub(environ[i], len + 1, ft_strlen(environ[i]));
 	}
+	return 0;
+}
+
+int ft_putenv()
+{
 	return 0;
 }
 
@@ -32,16 +34,19 @@ int	ft_echo(char **str)
 {
 	int i;
 	int j;
-	char **var;
+	char *var;
+	char *value;
 
 	i = 1;
 	if (!str[1])
 		ft_putstr("\n");
 	else if(str[1][0] == '$')
 	{
-		var = ft_strsplit(str[1], '$');
-		ft_putendl(ft_search_env(var[0]));
-		//ft_putstr("\n");
+		var = ft_strsub(str[1], 1, ft_strlen(str[1]));
+		value = ft_getenv(var);
+		ft_putendl(value);
+		free(var);
+		free(value);
 	}
 	else
 	{	

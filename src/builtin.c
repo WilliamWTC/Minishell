@@ -40,7 +40,7 @@ int ft_setenv(char **args)
   char **env;
 
   environ_len = ft_array_size(environ);
-  env = (char **)malloc(sizeof(char *) * (environ_len + 3));
+  env = (char **)malloc(sizeof(char *) * (environ_len + 2));
   i = 0;
   while(environ[i] != NULL)
   {

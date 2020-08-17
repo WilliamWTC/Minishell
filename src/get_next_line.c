@@ -70,7 +70,7 @@ int				get_next_line(int const fd, char **line)
 	while (i < BUFF_SIZE)
 		heap[i++] = '\0';
 	ret = gnl_read_file(fd, heap, &stack[fd], line);
-	free(heap);
+	//free(heap);
 	if (ret != 0 || stack[fd] == NULL || stack[fd][0] == '\0')
 	{
 		if (!ret && *line)
@@ -79,5 +79,6 @@ int				get_next_line(int const fd, char **line)
 	}
 	*line = stack[fd];
 	stack[fd] = NULL;
+	free(heap);
 	return (1);
 }

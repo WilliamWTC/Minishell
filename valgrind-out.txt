@@ -1,239 +1,344 @@
-==19137== Memcheck, a memory error detector
-==19137== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==19137== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==19137== Command: ./minishell
-==19137== Parent PID: 19136
-==19137== 
---19137-- 
---19137-- Valgrind options:
---19137--    --tool=memcheck
---19137--    --leak-check=full
---19137--    --show-leak-kinds=all
---19137--    --track-fds=yes
---19137--    --track-origins=yes
---19137--    --show-reachable=yes
---19137--    --verbose
---19137--    --gen-suppressions=all
---19137--    --log-file=valgrind-out.txt
---19137-- Contents of /proc/version:
---19137--   Linux version 5.4.0-42-generic (buildd@lgw01-amd64-023) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #46~18.04.1-Ubuntu SMP Fri Jul 10 07:21:24 UTC 2020
---19137-- 
---19137-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
---19137-- Page sizes: currently 4096, max supported 4096
---19137-- Valgrind library directory: /usr/lib/valgrind
---19137-- Reading syms from /home/user/Desktop/Minishell/minishell
---19137-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
---19137--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
---19137--   .. CRC mismatch (computed ac9397f6 wanted d0d82632)
---19137--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
---19137--   .. CRC is valid
---19137-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---19137--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---19137--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
---19137--    object doesn't have a symbol table
---19137--    object doesn't have a dynamic symbol table
---19137-- Scheduler: using generic scheduler lock implementation.
---19137-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==19137== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-19137-by-user-on-???
-==19137== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-19137-by-user-on-???
-==19137== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-19137-by-user-on-???
-==19137== 
-==19137== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==19137== don't want to do, unless you know exactly what you're doing,
-==19137== or are doing some strange experiment):
-==19137==   /usr/lib/valgrind/../../bin/vgdb --pid=19137 ...command...
-==19137== 
-==19137== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==19137==   /path/to/gdb ./minishell
-==19137== and then give GDB the following command
-==19137==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=19137
-==19137== --pid is optional if only one valgrind process is running
-==19137== 
---19137-- REDIR: 0x401f320 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
---19137-- REDIR: 0x401f100 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
---19137-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---19137--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---19137--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
---19137--    object doesn't have a symbol table
---19137-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---19137--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---19137--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
---19137--    object doesn't have a symbol table
-==19137== WARNING: new redirection conflicts with existing -- ignoring it
---19137--     old: 0x0401f320 (strlen              ) R-> (0000.0) 0x580608c1 ???
---19137--     new: 0x0401f320 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
---19137-- REDIR: 0x401d390 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
---19137-- REDIR: 0x401f860 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
---19137-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
---19137--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
---19137--   .. CRC mismatch (computed c2c067b2 wanted d73adc7f)
---19137--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
---19137--   .. CRC is valid
---19137-- REDIR: 0x4edace0 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9db0 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edafc0 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9800 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9de0 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edc830 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edae50 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edac80 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9d70 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9870 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edadb0 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ef8160 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9d10 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed98e0 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edb010 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed98b0 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edb150 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9e10 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9830 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ed9ce0 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ee4730 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edb060 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edac50 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4ef8f20 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4eda0c0 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edaf90 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edaf60 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edc860 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4edb0b0 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---19137-- REDIR: 0x4fca630 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
---19137-- REDIR: 0x4ed30e0 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
---19137-- REDIR: 0x4ed39c0 (libc.so.6:free) redirected to 0x4c30cd0 (free)
-==19137== 
-==19137== FILE DESCRIPTORS: 32 open at exit.
-==19137== Open file descriptor 104: /snap/code/39/usr/share/code/natives_blob.bin
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 103: /snap/code/39/usr/share/code/v8_context_snapshot.bin
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 53: /dev/shm/.org.chromium.Chromium.r74r83 (deleted)
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 52: /dev/shm/.org.chromium.Chromium.QvihnG (deleted)
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.Vl99Bi (deleted)
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 50: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 49: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 48: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 47: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Italic.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open AF_UNIX socket 36: <unknown>
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 31: /snap/code/39/usr/share/code/resources/app/node_modules.asar
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open AF_UNIX socket 20: <unknown>
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 19: /snap/code/39/usr/share/code/resources.pak
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 18: /snap/code/39/usr/share/code/locales/en-GB.pak
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 17: /snap/code/39/usr/share/code/chrome_200_percent.pak
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 16: /snap/code/39/usr/share/code/chrome_100_percent.pak
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 15: /snap/code/39/usr/share/code/natives_blob.bin
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 14: /snap/code/39/usr/share/code/v8_context_snapshot.bin
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 13: /snap/code/39/usr/share/code/icudtl.dat
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 12:
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open AF_UNIX socket 5: <unknown>
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open AF_UNIX socket 4: <unknown>
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 2: /dev/pts/0
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 1: /dev/pts/0
-==19137==    <inherited from parent>
-==19137== 
-==19137== Open file descriptor 0: /dev/pts/0
-==19137==    <inherited from parent>
-==19137== 
-==19137== 
-==19137== HEAP SUMMARY:
-==19137==     in use at exit: 2 bytes in 1 blocks
-==19137==   total heap usage: 6 allocs, 5 frees, 60 bytes allocated
-==19137== 
-==19137== Searching for pointers to 1 not-freed blocks
-==19137== Checked 70,968 bytes
-==19137== 
-==19137== 2 bytes in 1 blocks are still reachable in loss record 1 of 1
-==19137==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==19137==    by 0x109A6F: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==19137==    by 0x109A55: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==19137==    by 0x109D9D: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==19137==    by 0x1094FD: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==19137==    by 0x109804: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==19137==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==19137== 
+==16246== Memcheck, a memory error detector
+==16246== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16246== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==16246== Command: ./minishell
+==16246== Parent PID: 15916
+==16246== 
+--16246-- 
+--16246-- Valgrind options:
+--16246--    --tool=memcheck
+--16246--    --leak-check=full
+--16246--    --show-leak-kinds=all
+--16246--    --track-fds=yes
+--16246--    --track-origins=yes
+--16246--    --show-reachable=yes
+--16246--    --verbose
+--16246--    --gen-suppressions=all
+--16246--    --log-file=valgrind-out.txt
+--16246-- Contents of /proc/version:
+--16246--   Linux version 5.4.0-42-generic (buildd@lgw01-amd64-023) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #46~18.04.1-Ubuntu SMP Fri Jul 10 07:21:24 UTC 2020
+--16246-- 
+--16246-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--16246-- Page sizes: currently 4096, max supported 4096
+--16246-- Valgrind library directory: /usr/lib/valgrind
+--16246-- Reading syms from /home/user/Desktop/Minishell/minishell
+--16246-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--16246--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--16246--   .. CRC mismatch (computed ac9397f6 wanted d0d82632)
+--16246--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--16246--   .. CRC is valid
+--16246-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--16246--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--16246--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
+--16246--    object doesn't have a symbol table
+--16246--    object doesn't have a dynamic symbol table
+--16246-- Scheduler: using generic scheduler lock implementation.
+--16246-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==16246== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-16246-by-user-on-???
+==16246== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-16246-by-user-on-???
+==16246== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-16246-by-user-on-???
+==16246== 
+==16246== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==16246== don't want to do, unless you know exactly what you're doing,
+==16246== or are doing some strange experiment):
+==16246==   /usr/lib/valgrind/../../bin/vgdb --pid=16246 ...command...
+==16246== 
+==16246== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==16246==   /path/to/gdb ./minishell
+==16246== and then give GDB the following command
+==16246==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=16246
+==16246== --pid is optional if only one valgrind process is running
+==16246== 
+--16246-- REDIR: 0x401f320 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
+--16246-- REDIR: 0x401f100 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
+--16246-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--16246--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--16246--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
+--16246--    object doesn't have a symbol table
+--16246-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--16246--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--16246--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
+--16246--    object doesn't have a symbol table
+==16246== WARNING: new redirection conflicts with existing -- ignoring it
+--16246--     old: 0x0401f320 (strlen              ) R-> (0000.0) 0x580608c1 ???
+--16246--     new: 0x0401f320 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--16246-- REDIR: 0x401d390 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--16246-- REDIR: 0x401f860 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--16246-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--16246--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--16246--   .. CRC mismatch (computed c2c067b2 wanted d73adc7f)
+--16246--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--16246--   .. CRC is valid
+--16246-- REDIR: 0x4edace0 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9db0 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edafc0 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9800 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9de0 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edc830 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edae50 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edac80 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9d70 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9870 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edadb0 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ef8160 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9d10 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed98e0 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edb010 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed98b0 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edb150 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9e10 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9830 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ed9ce0 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ee4730 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edb060 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edac50 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4ef8f20 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4eda0c0 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edaf90 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edaf60 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edc860 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4edb0b0 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--16246-- REDIR: 0x4fca630 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--16246-- REDIR: 0x4ed30e0 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--16246-- REDIR: 0x4ed39c0 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==16246== Invalid read of size 8
+==16246==    at 0x10918A: ft_env (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Address 0x522df30 is 0 bytes inside a block of size 584 free'd
+==16246==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x1092C8: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Block was alloc'd at
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109201: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   fun:ft_env
+   fun:ft_execute
+   fun:main
+}
+==16246== Invalid read of size 8
+==16246==    at 0x109167: ft_env (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Address 0x522df30 is 0 bytes inside a block of size 584 free'd
+==16246==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x1092C8: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Block was alloc'd at
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109201: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   fun:ft_env
+   fun:ft_execute
+   fun:main
+}
+==16246== 
+==16246== FILE DESCRIPTORS: 32 open at exit.
+==16246== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 53: /dev/shm/.org.chromium.Chromium.0mzZ5k (deleted)
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 52: /dev/shm/.org.chromium.Chromium.K27Kl2 (deleted)
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.oBqABJ (deleted)
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 50: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 49: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 48: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 47: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Italic.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open AF_UNIX socket 36: <unknown>
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 31: /snap/code/40/usr/share/code/resources/app/node_modules.asar
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open AF_UNIX socket 20: <unknown>
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 12:
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open AF_UNIX socket 5: <unknown>
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open AF_UNIX socket 4: <unknown>
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 2: /dev/pts/1
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 1: /dev/pts/1
+==16246==    <inherited from parent>
+==16246== 
+==16246== Open file descriptor 0: /dev/pts/1
+==16246==    <inherited from parent>
+==16246== 
+==16246== 
+==16246== HEAP SUMMARY:
+==16246==     in use at exit: 4,186 bytes in 72 blocks
+==16246==   total heap usage: 90 allocs, 18 frees, 11,256 bytes allocated
+==16246== 
+==16246== Searching for pointers to 72 not-freed blocks
+==16246== Checked 79,160 bytes
+==16246== 
+==16246== 12 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109AE3: ft_strdup (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x10928F: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
-   match-leak-kinds: reachable
+   match-leak-kinds: definite
    fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:get_next_line
-   fun:ft_gnl
+   fun:ft_strdup
+   fun:ft_setenv
+   fun:ft_execute
    fun:main
 }
-==19137== LEAK SUMMARY:
-==19137==    definitely lost: 0 bytes in 0 blocks
-==19137==    indirectly lost: 0 bytes in 0 blocks
-==19137==      possibly lost: 0 bytes in 0 blocks
-==19137==    still reachable: 2 bytes in 1 blocks
-==19137==         suppressed: 0 bytes in 0 blocks
-==19137== 
-==19137== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==19137== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==16246== 4,174 bytes in 71 blocks are definitely lost in loss record 2 of 2
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109AE3: ft_strdup (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x109243: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:ft_strdup
+   fun:ft_setenv
+   fun:ft_execute
+   fun:main
+}
+==16246== LEAK SUMMARY:
+==16246==    definitely lost: 4,186 bytes in 72 blocks
+==16246==    indirectly lost: 0 bytes in 0 blocks
+==16246==      possibly lost: 0 bytes in 0 blocks
+==16246==    still reachable: 0 bytes in 0 blocks
+==16246==         suppressed: 0 bytes in 0 blocks
+==16246== 
+==16246== ERROR SUMMARY: 147 errors from 4 contexts (suppressed: 0 from 0)
+==16246== 
+==16246== 72 errors in context 1 of 4:
+==16246== Invalid read of size 8
+==16246==    at 0x109167: ft_env (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Address 0x522df30 is 0 bytes inside a block of size 584 free'd
+==16246==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x1092C8: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Block was alloc'd at
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109201: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   fun:ft_env
+   fun:ft_execute
+   fun:main
+}
+==16246== 
+==16246== 73 errors in context 2 of 4:
+==16246== Invalid read of size 8
+==16246==    at 0x10918A: ft_env (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Address 0x522df30 is 0 bytes inside a block of size 584 free'd
+==16246==    at 0x4C30D3B: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x1092C8: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246==  Block was alloc'd at
+==16246==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16246==    by 0x109201: ft_setenv (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x1090C5: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==16246==    by 0x108CBD: main (in /home/user/Desktop/Minishell/minishell)
+==16246== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr8
+   fun:ft_env
+   fun:ft_execute
+   fun:main
+}
+==16246== ERROR SUMMARY: 147 errors from 4 contexts (suppressed: 0 from 0)

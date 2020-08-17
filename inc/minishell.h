@@ -14,17 +14,17 @@ void    ft_free_double_char();
 
 extern char **environ;
 
-int    ft_help();
-int    ft_cd();
-int    ft_env();
-int    ft_setenv();
-int    ft_unsetenv();
-int    ft_echo();
-int    ft_clear();
-int    ft_exit();
-int    num_builtins();
+int     ft_help();
+int     ft_cd();
+int     ft_env();
+int     ft_setenv();
+int     ft_unsetenv();
+int     ft_echo();
+int     ft_clear();
+int     ft_exit();
+int     num_builtins();
 
-char	*ft_search_env();
+char    *ft_getenv();
 
 int    ft_launch();
 int    ft_execute();

@@ -34,7 +34,7 @@ char	**ft_split(const char *s)
 	ret[j] = 0;
 	return (ret);
 }
-
+/*
 char    *ft_gnl()
 {
 	int ret;
@@ -45,8 +45,8 @@ char    *ft_gnl()
 	free(buff);
 	return (0);
 }
+*/
 
-/*
 char    *ft_gnl()
 {
 	int bufsize = 1024;
@@ -82,4 +82,3 @@ char    *ft_gnl()
   }
   free(buffer);
 }
-*/
