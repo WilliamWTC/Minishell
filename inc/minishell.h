@@ -24,7 +24,8 @@ int     ft_clear();
 int     ft_exit();
 int     num_builtins();
 
+int     ft_array_size();
 char    *ft_getenv();
-
-int    ft_launch();
-int    ft_execute();
+int     ft_putenv();
+int     ft_launch();
+int     ft_execute();

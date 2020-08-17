@@ -17,7 +17,7 @@ int ft_env()
   i = 0;
   while(environ[i] != NULL)
   {
-    ft_putendl(environ[i]);
+    ft_putendl((char *)environ[i]);
     i++;
   }
   return 1;
@@ -35,21 +35,19 @@ int ft_array_size(char **envp)
 
 int ft_setenv(char **args)
 {
-  int i;
-  int environ_len;
-  char **env;
+  char *var;
 
-  environ_len = ft_array_size(environ);
-  env = (char **)malloc(sizeof(char *) * (environ_len + 2));
-  i = 0;
-  while(environ[i] != NULL)
+  if (!args[1] || !args[2])
+    ft_putendl("Minishel: setenv format, setenv VARIABLE VALUE");
+  else
   {
-    env[i] = ft_strdup(environ[i]);
-    i++;
+    var = (char *)malloc(sizeof(var) * (ft_strlen(args[1]) + ft_strlen(args[2] + 2)));
+    ft_strcpy(var, args[1]);
+    ft_strcat(var, "=");
+    ft_strcat(var, args[2]);
+    ft_putenv(var);
+    free(var);
   }
-  env[environ_len] = ft_strdup(args[1]);
-  env[environ_len + 1] = NULL;
-  environ = env;
   return 1;
 }
 

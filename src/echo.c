@@ -25,9 +25,24 @@ char *ft_getenv(char *s)
 	return 0;
 }
 
-int ft_putenv()
+int ft_putenv(char *s)
 {
-	return 0;
+	int i;
+	int environ_len;
+	char **env;
+
+	environ_len = ft_array_size(environ);
+	env = (char **)malloc(sizeof(char *) * (environ_len + 2));
+	i = 0;
+	while(environ[i] != NULL)
+	{
+		env[i] = ft_strdup(environ[i]);
+		i++;
+	}
+	env[environ_len] = ft_strdup(s);
+	env[environ_len + 1] = NULL;
+	environ = env;
+	return 1;
 }
 
 int	ft_echo(char **str)
