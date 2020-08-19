@@ -3,82 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmabitse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lmolaodi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/30 17:31:15 by lmabitse          #+#    #+#             */
-/*   Updated: 2019/09/24 16:32:43 by william          ###   ########.fr       */
+/*   Created: 2019/07/15 13:31:47 by lmolaodi          #+#    #+#             */
+/*   Updated: 2019/07/16 12:45:43 by lmolaodi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int		gnl_verify_line(char **stack, char **line)
+char	ft_check_line(int fd, char **file, char **buff)
 {
-	char		*tmp_stack;
-	char		*strchr_stack;
+	char		*tmp;
 	int			i;
 
 	i = 0;
-	strchr_stack = *stack;
-	while (strchr_stack[i] != '\n')
-		if (!strchr_stack[i++])
-			return (0);
-	tmp_stack = &strchr_stack[i];
-	*tmp_stack = '\0';
-	*line = ft_strdup(*stack);
-	*stack = ft_strdup(tmp_stack + 1);
+	while (file[fd][i] != '\n' && file[fd][i])
+		i++;
+	if (file[fd][i] == '\n')
+	{
+		*buff = ft_strsub(file[fd], 0, i);
+		tmp = ft_strdup(file[fd] + i + 1);
+		free(file[fd]);
+		file[fd] = tmp;
+	}
+	else
+	{
+		*buff = file[fd];
+		file[fd] = NULL;
+	}
 	return (1);
 }
 
-static int		gnl_read_file(int fd, char *heap, char **stack, char **line)
+int		get_next_line(const int fd, char **line)
 {
-	int			ret;
-	char		*tmp_stack;
+	static char	*file[1024];
+	char		text[BUFF_SIZE];
+	char		*temp;
+	int			red_fd;
 
-	while ((ret = read(fd, heap, BUFF_SIZE)) > 0)
+	if (fd == -1 || line == NULL || read(fd, text, 0))
+		return (-1);
+	if (file[fd] == NULL)
+		file[fd] = ft_strnew(0);
+	while ((red_fd = read(fd, text, BUFF_SIZE)) > 0)
 	{
-		heap[ret] = '\0';
-		if (*stack)
-		{
-			tmp_stack = *stack;
-			*stack = ft_strjoin(tmp_stack, heap);
-			free(tmp_stack);
-			tmp_stack = NULL;
-		}
-		else
-			*stack = ft_strdup(heap);
-		if (gnl_verify_line(stack, line))
+		text[red_fd] = '\0';
+		temp = ft_strjoin(file[fd], text);
+		free(file[fd]);
+		file[fd] = temp;
+		if (ft_strchr(file[fd], '\n'))
 			break ;
 	}
-	return (RET_VALUE(ret));
-}
-
-int				get_next_line(int const fd, char **line)
-{
-	static char		*stack[MAX_FD];
-	char			*heap;
-	int				ret;
-	int				i;
-
-	if (!line || (fd < 0 || fd >= MAX_FD) || (read(fd, stack[fd], 0) < 0) \
-		|| !(heap = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
-		return (-1);
-	if (stack[fd])
-		if (gnl_verify_line(&stack[fd], line))
-			return (1);
-	i = 0;
-	while (i < BUFF_SIZE)
-		heap[i++] = '\0';
-	ret = gnl_read_file(fd, heap, &stack[fd], line);
-	//free(heap);
-	if (ret != 0 || stack[fd] == NULL || stack[fd][0] == '\0')
+	if (red_fd == 0 && file[fd][0] == '\0')
 	{
-		if (!ret && *line)
-			*line = NULL;
-		return (ret);
+		*line = NULL;
+		return (0);
 	}
-	*line = stack[fd];
-	stack[fd] = NULL;
-	free(heap);
-	return (1);
+	return (ft_check_line(fd, file, line));
 }

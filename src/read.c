@@ -34,7 +34,7 @@ char	**ft_split(const char *s)
 	ret[j] = 0;
 	return (ret);
 }
-/*
+
 char    *ft_gnl()
 {
 	int ret;
@@ -42,11 +42,10 @@ char    *ft_gnl()
 
 	if ((ret = get_next_line(0, &buff)) > 0)
     	return (buff);
-	free(buff);
 	return (0);
 }
-*/
 
+/*
 char    *ft_gnl()
 {
 	int bufsize = 1024;
@@ -56,29 +55,23 @@ char    *ft_gnl()
 
 	if (!buffer)
 		return 0;
-
-  	while (1) {
-    	// Read a character
+  	while (1)
+	{
     	c = getchar();
-
-    // If we hit EOF, replace it with a null character and return.
-    if (c == EOF || c == '\n') {
-      buffer[position] = '\0';
-      return buffer;
-    } else {
-      buffer[position] = c;
-    }
-    position++;
-
-    // If we have exceeded the buffer, reallocate.
-    if (position >= bufsize) {
-      bufsize += 1024;
-      buffer = realloc(buffer, bufsize);
-      if (!buffer) {
-        fprintf(stderr, "lsh: allocation error\n");
-        exit(EXIT_FAILURE);
-      }
-    }
-  }
-  free(buffer);
+    	if (c == EOF || c == '\n')
+		{
+     		buffer[position] = '\0';
+      		return buffer;
+    	}
+		else
+      		buffer[position] = c;
+    	position++;
+    	if (position >= bufsize) {
+      		bufsize += 1024;
+      		buffer = realloc(buffer, bufsize);
+      		if (!buffer)
+        		return 0;
+    	}
+  	}
 }
+*/
