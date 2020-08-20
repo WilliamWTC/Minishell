@@ -14,7 +14,6 @@
 
 char	ft_check_line(int fd, char **file, char **buff)
 {
-	char		*tmp;
 	int			i;
 
 	i = 0;
@@ -23,9 +22,9 @@ char	ft_check_line(int fd, char **file, char **buff)
 	if (file[fd][i] == '\n')
 	{
 		*buff = ft_strsub(file[fd], 0, i);
-		tmp = ft_strdup(file[fd] + i + 1);
+		tmp_fd = ft_strdup(file[fd] + i + 1);
 		free(file[fd]);
-		file[fd] = tmp;
+		file[fd] = tmp_fd;
 	}
 	else
 	{

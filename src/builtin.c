@@ -79,6 +79,10 @@ int ft_clear()
 
 int ft_exit()
 {
+  if(tmp_fd)
+    free(tmp_fd);
+  if(tmp_environ)
+    ft_free_double_char(tmp_environ);
   ft_putendl("exit");
   return 0;
 }

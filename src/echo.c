@@ -29,19 +29,18 @@ int ft_putenv(char *s)
 {
 	int i;
 	int environ_len;
-	char **env;
 
 	environ_len = ft_array_size(environ);
-	env = (char **)malloc(sizeof(char *) * (environ_len + 2));
+	tmp_environ = (char **)malloc(sizeof(char *) * (environ_len + 2));
 	i = 0;
 	while(environ[i] != NULL)
 	{
-		env[i] = ft_strdup(environ[i]);
+		tmp_environ[i] = ft_strdup(environ[i]);
 		i++;
 	}
-	env[environ_len] = ft_strdup(s);
-	env[environ_len + 1] = NULL;
-	environ = env;
+	tmp_environ[environ_len] = ft_strdup(s);
+	tmp_environ[environ_len + 1] = NULL;
+	environ = tmp_environ;
 	return 1;
 }
 

@@ -13,6 +13,7 @@ int     get_next_line();
 void    ft_free_double_char();
 
 extern char **environ;
+char        **tmp_environ;
 
 int     ft_help();
 int     ft_cd();
