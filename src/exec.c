@@ -47,6 +47,8 @@ int ft_help()
 int ft_execute(char **args)
 {
   int i;
+  char *path;
+  char *cmd;
 
   if (args[0] == NULL)
     return 1;
@@ -58,6 +60,14 @@ int ft_execute(char **args)
       return (*builtin_func[i])(args);
     i++;
   }
-
+  path = ft_getenv("PATH");
+  if(path != NULL)
+  {
+    cmd = ft_strjoin("/", args[0]);
+    free(args[0]);
+    args[0] = ft_strjoin(path, cmd);
+    free(path);
+    free(cmd);
+  }
   return ft_launch(args);
 }
