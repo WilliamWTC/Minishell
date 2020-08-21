@@ -25,6 +25,8 @@ int main()
   char *line;
   char **args;
   int status;
+  char **cmd;
+  int i;
 
   signal(SIGINT, sigintHandler);
   status = 1;
@@ -32,10 +34,17 @@ int main()
   {
     ft_putstr("\033[1m\033[34mminishell $> \033[0m");
     line = ft_gnl();
-    args = ft_split(line);
-    status = ft_execute(args);
+    i = 0;
+    cmd = ft_strsplit(line, ';');
+    while(cmd[i] != NULL)
+    {
+      args = ft_split(cmd[i]);
+      status = ft_execute(args);
+      ft_free_double_char(args);
+      i++;
+    }
     free(line);
-    ft_free_double_char(args);
+    ft_free_double_char(cmd);
   }
   return 0;
 }
