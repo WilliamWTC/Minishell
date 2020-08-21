@@ -1,214 +1,214 @@
-==26864== Memcheck, a memory error detector
-==26864== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==26864== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==26864== Command: ./minishell
-==26864== Parent PID: 26536
-==26864== 
---26864-- 
---26864-- Valgrind options:
---26864--    --tool=memcheck
---26864--    --leak-check=full
---26864--    --show-leak-kinds=all
---26864--    --track-fds=yes
---26864--    --track-origins=yes
---26864--    --show-reachable=yes
---26864--    --verbose
---26864--    --gen-suppressions=all
---26864--    --log-file=valgrind-out.txt
---26864-- Contents of /proc/version:
---26864--   Linux version 5.4.0-42-generic (buildd@lgw01-amd64-023) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #46~18.04.1-Ubuntu SMP Fri Jul 10 07:21:24 UTC 2020
---26864-- 
---26864-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
---26864-- Page sizes: currently 4096, max supported 4096
---26864-- Valgrind library directory: /usr/lib/valgrind
---26864-- Reading syms from /home/user/Desktop/Minishell/minishell
---26864-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
---26864--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
---26864--   .. CRC mismatch (computed ac9397f6 wanted d0d82632)
---26864--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
---26864--   .. CRC is valid
---26864-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---26864--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---26864--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
---26864--    object doesn't have a symbol table
---26864--    object doesn't have a dynamic symbol table
---26864-- Scheduler: using generic scheduler lock implementation.
---26864-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==26864== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-26864-by-user-on-???
-==26864== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-26864-by-user-on-???
-==26864== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-26864-by-user-on-???
-==26864== 
-==26864== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==26864== don't want to do, unless you know exactly what you're doing,
-==26864== or are doing some strange experiment):
-==26864==   /usr/lib/valgrind/../../bin/vgdb --pid=26864 ...command...
-==26864== 
-==26864== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==26864==   /path/to/gdb ./minishell
-==26864== and then give GDB the following command
-==26864==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=26864
-==26864== --pid is optional if only one valgrind process is running
-==26864== 
---26864-- REDIR: 0x401f320 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
---26864-- REDIR: 0x401f100 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
---26864-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---26864--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---26864--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
---26864--    object doesn't have a symbol table
---26864-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---26864--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---26864--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
---26864--    object doesn't have a symbol table
-==26864== WARNING: new redirection conflicts with existing -- ignoring it
---26864--     old: 0x0401f320 (strlen              ) R-> (0000.0) 0x580608c1 ???
---26864--     new: 0x0401f320 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
---26864-- REDIR: 0x401d390 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
---26864-- REDIR: 0x401f860 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
---26864-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
---26864--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
---26864--   .. CRC mismatch (computed c2c067b2 wanted d73adc7f)
---26864--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
---26864--   .. CRC is valid
---26864-- REDIR: 0x4edace0 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9db0 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edafc0 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9800 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9de0 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edc830 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edae50 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edac80 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9d70 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9870 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edadb0 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ef8160 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9d10 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed98e0 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edb010 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed98b0 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edb150 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9e10 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9830 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ed9ce0 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ee4730 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edb060 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edac50 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4ef8f20 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4eda0c0 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edaf90 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edaf60 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edc860 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4edb0b0 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
---26864-- REDIR: 0x4fca630 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
---26864-- REDIR: 0x4ed30e0 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
---26864-- REDIR: 0x4ed39c0 (libc.so.6:free) redirected to 0x4c30cd0 (free)
-==26912== 
-==26912== FILE DESCRIPTORS: 30 open at exit.
-==26912== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open AF_UNIX socket 31: <unknown>
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open AF_UNIX socket 25: <unknown>
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 12:
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open AF_UNIX socket 5: <unknown>
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open AF_UNIX socket 4: <unknown>
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 2: /dev/pts/0
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 1: /dev/pts/0
-==26912==    <inherited from parent>
-==26912== 
-==26912== Open file descriptor 0: /dev/pts/0
-==26912==    <inherited from parent>
-==26912== 
-==26912== 
-==26912== HEAP SUMMARY:
-==26912==     in use at exit: 4,510 bytes in 76 blocks
-==26912==   total heap usage: 126 allocs, 50 frees, 5,665 bytes allocated
-==26912== 
-==26912== Searching for pointers to 76 not-freed blocks
-==26912== Checked 83,536 bytes
-==26912== 
-==26912== 1 bytes in 1 blocks are still reachable in loss record 1 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
+==12772== Memcheck, a memory error detector
+==12772== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12772== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==12772== Command: ./minishell
+==12772== Parent PID: 12435
+==12772== 
+--12772-- 
+--12772-- Valgrind options:
+--12772--    --tool=memcheck
+--12772--    --leak-check=full
+--12772--    --show-leak-kinds=all
+--12772--    --track-fds=yes
+--12772--    --track-origins=yes
+--12772--    --show-reachable=yes
+--12772--    --verbose
+--12772--    --gen-suppressions=all
+--12772--    --log-file=valgrind-out.txt
+--12772-- Contents of /proc/version:
+--12772--   Linux version 5.4.0-42-generic (buildd@lgw01-amd64-023) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #46~18.04.1-Ubuntu SMP Fri Jul 10 07:21:24 UTC 2020
+--12772-- 
+--12772-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--12772-- Page sizes: currently 4096, max supported 4096
+--12772-- Valgrind library directory: /usr/lib/valgrind
+--12772-- Reading syms from /home/user/Desktop/Minishell/minishell
+--12772-- Reading syms from /lib/x86_64-linux-gnu/ld-2.27.so
+--12772--   Considering /lib/x86_64-linux-gnu/ld-2.27.so ..
+--12772--   .. CRC mismatch (computed ac9397f6 wanted d0d82632)
+--12772--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.27.so ..
+--12772--   .. CRC is valid
+--12772-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--12772--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--12772--   .. CRC mismatch (computed 41ddb025 wanted 9972f546)
+--12772--    object doesn't have a symbol table
+--12772--    object doesn't have a dynamic symbol table
+--12772-- Scheduler: using generic scheduler lock implementation.
+--12772-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==12772== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-12772-by-user-on-???
+==12772== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-12772-by-user-on-???
+==12772== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-12772-by-user-on-???
+==12772== 
+==12772== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==12772== don't want to do, unless you know exactly what you're doing,
+==12772== or are doing some strange experiment):
+==12772==   /usr/lib/valgrind/../../bin/vgdb --pid=12772 ...command...
+==12772== 
+==12772== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==12772==   /path/to/gdb ./minishell
+==12772== and then give GDB the following command
+==12772==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=12772
+==12772== --pid is optional if only one valgrind process is running
+==12772== 
+--12772-- REDIR: 0x401f320 (ld-linux-x86-64.so.2:strlen) redirected to 0x580608c1 (???)
+--12772-- REDIR: 0x401f100 (ld-linux-x86-64.so.2:index) redirected to 0x580608db (???)
+--12772-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--12772--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--12772--   .. CRC mismatch (computed 50df1b30 wanted 4800a4cf)
+--12772--    object doesn't have a symbol table
+--12772-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--12772--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--12772--   .. CRC mismatch (computed f893b962 wanted 95ee359e)
+--12772--    object doesn't have a symbol table
+==12772== WARNING: new redirection conflicts with existing -- ignoring it
+--12772--     old: 0x0401f320 (strlen              ) R-> (0000.0) 0x580608c1 ???
+--12772--     new: 0x0401f320 (strlen              ) R-> (2007.0) 0x04c32db0 strlen
+--12772-- REDIR: 0x401d390 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c33ee0 (strcmp)
+--12772-- REDIR: 0x401f860 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c374f0 (mempcpy)
+--12772-- Reading syms from /lib/x86_64-linux-gnu/libc-2.27.so
+--12772--   Considering /lib/x86_64-linux-gnu/libc-2.27.so ..
+--12772--   .. CRC mismatch (computed c2c067b2 wanted d73adc7f)
+--12772--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.27.so ..
+--12772--   .. CRC is valid
+--12772-- REDIR: 0x4edace0 (libc.so.6:memmove) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9db0 (libc.so.6:strncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edafc0 (libc.so.6:strcasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9800 (libc.so.6:strcat) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9de0 (libc.so.6:rindex) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edc830 (libc.so.6:rawmemchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edae50 (libc.so.6:mempcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edac80 (libc.so.6:bcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9d70 (libc.so.6:strncmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9870 (libc.so.6:strcmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edadb0 (libc.so.6:memset) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ef8160 (libc.so.6:wcschr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9d10 (libc.so.6:strnlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed98e0 (libc.so.6:strcspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edb010 (libc.so.6:strncasecmp) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed98b0 (libc.so.6:strcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edb150 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9e10 (libc.so.6:strpbrk) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9830 (libc.so.6:index) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ed9ce0 (libc.so.6:strlen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ee4730 (libc.so.6:memrchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edb060 (libc.so.6:strcasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edac50 (libc.so.6:memchr) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4ef8f20 (libc.so.6:wcslen) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4eda0c0 (libc.so.6:strspn) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edaf90 (libc.so.6:stpncpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edaf60 (libc.so.6:stpcpy) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edc860 (libc.so.6:strchrnul) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4edb0b0 (libc.so.6:strncasecmp_l) redirected to 0x4a2a6e0 (_vgnU_ifunc_wrapper)
+--12772-- REDIR: 0x4fca630 (libc.so.6:__strrchr_avx2) redirected to 0x4c32730 (rindex)
+--12772-- REDIR: 0x4ed30e0 (libc.so.6:malloc) redirected to 0x4c2faa0 (malloc)
+--12772-- REDIR: 0x4ed39c0 (libc.so.6:free) redirected to 0x4c30cd0 (free)
+==13035== 
+==13035== FILE DESCRIPTORS: 30 open at exit.
+==13035== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.oi0tLG (deleted)
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.oJOjY3 (deleted)
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.qZedbr (deleted)
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open AF_UNIX socket 31: <unknown>
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open AF_UNIX socket 25: <unknown>
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 12:
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open AF_UNIX socket 5: <unknown>
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open AF_UNIX socket 4: <unknown>
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 2: /dev/pts/0
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 1: /dev/pts/0
+==13035==    <inherited from parent>
+==13035== 
+==13035== Open file descriptor 0: /dev/pts/0
+==13035==    <inherited from parent>
+==13035== 
+==13035== 
+==13035== HEAP SUMMARY:
+==13035==     in use at exit: 322 bytes in 4 blocks
+==13035==   total heap usage: 20 allocs, 16 frees, 814 bytes allocated
+==13035== 
+==13035== Searching for pointers to 4 not-freed blocks
+==13035== Checked 79,560 bytes
+==13035== 
+==13035== 1 bytes in 1 blocks are still reachable in loss record 1 of 4
+==13035==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13035==    by 0x109C1F: ft_strdup (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x1095AD: ft_check_line (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x1097DB: get_next_line (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x109A7C: ft_gnl (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x108C04: main (in /home/user/Desktop/Minishell/minishell)
+==13035== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -220,16 +220,16 @@
    fun:ft_gnl
    fun:main
 }
-==26912== 3 bytes in 1 blocks are still reachable in loss record 2 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
+==13035== 4 bytes in 1 blocks are still reachable in loss record 2 of 4
+==13035==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13035==    by 0x109D61: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x109D47: ft_strnew (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x109EC4: ft_strsub (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x109577: ft_check_line (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x1097DB: get_next_line (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x109A7C: ft_gnl (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x108C04: main (in /home/user/Desktop/Minishell/minishell)
+==13035== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -243,12 +243,25 @@
    fun:ft_gnl
    fun:main
 }
-==26912== 8 bytes in 1 blocks are still reachable in loss record 3 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x109D5C: ft_strjoin (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109109: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
+==13035== 32 bytes in 1 blocks are still reachable in loss record 3 of 4
+==13035==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13035==    by 0x10993F: ft_split (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x108C19: main (in /home/user/Desktop/Minishell/minishell)
+==13035== 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:ft_split
+   fun:main
+}
+==13035== 285 bytes in 1 blocks are still reachable in loss record 4 of 4
+==13035==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13035==    by 0x109DED: ft_strjoin (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x10919A: ft_execute (in /home/user/Desktop/Minishell/minishell)
+==13035==    by 0x108C2E: main (in /home/user/Desktop/Minishell/minishell)
+==13035== 
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -258,1479 +271,113 @@
    fun:ft_execute
    fun:main
 }
-==26912== 10 bytes in 1 blocks are still reachable in loss record 4 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26912== 24 bytes in 1 blocks are still reachable in loss record 5 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26912== 576 bytes in 1 blocks are still reachable in loss record 6 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26912== 3,888 bytes in 70 blocks are still reachable in loss record 7 of 7
-==26912==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26912==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26912==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26912== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26912== LEAK SUMMARY:
-==26912==    definitely lost: 0 bytes in 0 blocks
-==26912==    indirectly lost: 0 bytes in 0 blocks
-==26912==      possibly lost: 0 bytes in 0 blocks
-==26912==    still reachable: 4,510 bytes in 76 blocks
-==26912==         suppressed: 0 bytes in 0 blocks
-==26912== 
-==26912== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==26912== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==26921== 
-==26921== FILE DESCRIPTORS: 30 open at exit.
-==26921== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open AF_UNIX socket 31: <unknown>
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open AF_UNIX socket 25: <unknown>
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 12:
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open AF_UNIX socket 5: <unknown>
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open AF_UNIX socket 4: <unknown>
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 2: /dev/pts/0
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 1: /dev/pts/0
-==26921==    <inherited from parent>
-==26921== 
-==26921== Open file descriptor 0: /dev/pts/0
-==26921==    <inherited from parent>
-==26921== 
-==26921== 
-==26921== HEAP SUMMARY:
-==26921==     in use at exit: 4,630 bytes in 77 blocks
-==26921==   total heap usage: 135 allocs, 58 frees, 5,854 bytes allocated
-==26921== 
-==26921== Searching for pointers to 77 not-freed blocks
-==26921== Checked 83,560 bytes
-==26921== 
-==26921== 1 bytes in 1 blocks are still reachable in loss record 1 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26921== 8 bytes in 1 blocks are still reachable in loss record 2 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109D5C: ft_strjoin (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109109: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strjoin
-   fun:ft_execute
-   fun:main
-}
-==26921== 10 bytes in 1 blocks are still reachable in loss record 3 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26921== 12 bytes in 1 blocks are still reachable in loss record 4 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x10997D: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_split
-   fun:main
-}
-==26921== 15 bytes in 1 blocks are still reachable in loss record 5 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26921== 120 bytes in 1 blocks are still reachable in loss record 6 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26921== 576 bytes in 1 blocks are still reachable in loss record 7 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26921== 3,888 bytes in 70 blocks are still reachable in loss record 8 of 8
-==26921==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26921==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26921==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26921== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26921== LEAK SUMMARY:
-==26921==    definitely lost: 0 bytes in 0 blocks
-==26921==    indirectly lost: 0 bytes in 0 blocks
-==26921==      possibly lost: 0 bytes in 0 blocks
-==26921==    still reachable: 4,630 bytes in 77 blocks
-==26921==         suppressed: 0 bytes in 0 blocks
-==26921== 
-==26921== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==26921== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==26935== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-26935-by-user-on-???
-==26935== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-26935-by-user-on-???
-==26935== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-26935-by-user-on-???
-==26935== 
-==26935== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==26935== don't want to do, unless you know exactly what you're doing,
-==26935== or are doing some strange experiment):
-==26935==   /usr/lib/valgrind/../../bin/vgdb --pid=26935 ...command...
-==26935== 
-==26935== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==26935==   /path/to/gdb ./minishell
-==26935== and then give GDB the following command
-==26935==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=26935
-==26935== --pid is optional if only one valgrind process is running
-==26935== 
-==26935== 
-==26935== FILE DESCRIPTORS: 30 open at exit.
-==26935== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open AF_UNIX socket 31: <unknown>
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open AF_UNIX socket 25: <unknown>
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 12:
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open AF_UNIX socket 5: <unknown>
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open AF_UNIX socket 4: <unknown>
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 2: /dev/pts/0
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 1: /dev/pts/0
-==26935==    <inherited from parent>
-==26935== 
-==26935== Open file descriptor 0: /dev/pts/0
-==26935==    <inherited from parent>
-==26935== 
-==26935== 
-==26935== HEAP SUMMARY:
-==26935==     in use at exit: 4,505 bytes in 76 blocks
-==26935==   total heap usage: 146 allocs, 70 frees, 6,045 bytes allocated
-==26935== 
-==26935== Searching for pointers to 76 not-freed blocks
-==26935== Checked 83,512 bytes
-==26935== 
-==26935== 1 bytes in 1 blocks are still reachable in loss record 1 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26935== 3 bytes in 1 blocks are still reachable in loss record 2 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26935== 3 bytes in 1 blocks are still reachable in loss record 3 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x10997D: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_split
-   fun:main
-}
-==26935== 10 bytes in 1 blocks are definitely lost in loss record 4 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26935== 24 bytes in 1 blocks are still reachable in loss record 5 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26935== 576 bytes in 1 blocks are still reachable in loss record 6 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26935== 3,888 bytes in 70 blocks are still reachable in loss record 7 of 7
-==26935==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26935==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26935==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26935== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26935== LEAK SUMMARY:
-==26935==    definitely lost: 10 bytes in 1 blocks
-==26935==    indirectly lost: 0 bytes in 0 blocks
-==26935==      possibly lost: 0 bytes in 0 blocks
-==26935==    still reachable: 4,495 bytes in 75 blocks
-==26935==         suppressed: 0 bytes in 0 blocks
-==26935== 
-==26935== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26935== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26944== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-26944-by-user-on-???
-==26944== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-26944-by-user-on-???
-==26944== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-26944-by-user-on-???
-==26944== 
-==26944== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==26944== don't want to do, unless you know exactly what you're doing,
-==26944== or are doing some strange experiment):
-==26944==   /usr/lib/valgrind/../../bin/vgdb --pid=26944 ...command...
-==26944== 
-==26944== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==26944==   /path/to/gdb ./minishell
-==26944== and then give GDB the following command
-==26944==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=26944
-==26944== --pid is optional if only one valgrind process is running
-==26944== 
-==26944== 
-==26944== FILE DESCRIPTORS: 30 open at exit.
-==26944== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open AF_UNIX socket 31: <unknown>
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open AF_UNIX socket 25: <unknown>
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 12:
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open AF_UNIX socket 5: <unknown>
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open AF_UNIX socket 4: <unknown>
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 2: /dev/pts/0
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 1: /dev/pts/0
-==26944==    <inherited from parent>
-==26944== 
-==26944== Open file descriptor 0: /dev/pts/0
-==26944==    <inherited from parent>
-==26944== 
-==26944== 
-==26944== HEAP SUMMARY:
-==26944==     in use at exit: 4,675 bytes in 77 blocks
-==26944==   total heap usage: 152 allocs, 75 frees, 6,267 bytes allocated
-==26944== 
-==26944== Searching for pointers to 77 not-freed blocks
-==26944== Checked 83,552 bytes
-==26944== 
-==26944== 1 bytes in 1 blocks are still reachable in loss record 1 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26944== 10 bytes in 1 blocks are definitely lost in loss record 2 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26944== 20 bytes in 1 blocks are still reachable in loss record 3 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26944== 20 bytes in 2 blocks are still reachable in loss record 4 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x10997D: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_split
-   fun:main
-}
-==26944== 160 bytes in 1 blocks are still reachable in loss record 5 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26944== 576 bytes in 1 blocks are still reachable in loss record 6 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26944== 3,888 bytes in 70 blocks are still reachable in loss record 7 of 7
-==26944==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26944==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26944==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26944== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26944== LEAK SUMMARY:
-==26944==    definitely lost: 10 bytes in 1 blocks
-==26944==    indirectly lost: 0 bytes in 0 blocks
-==26944==      possibly lost: 0 bytes in 0 blocks
-==26944==    still reachable: 4,665 bytes in 76 blocks
-==26944==         suppressed: 0 bytes in 0 blocks
-==26944== 
-==26944== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26944== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26953== 
-==26953== FILE DESCRIPTORS: 30 open at exit.
-==26953== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open AF_UNIX socket 31: <unknown>
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open AF_UNIX socket 25: <unknown>
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 12:
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open AF_UNIX socket 5: <unknown>
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open AF_UNIX socket 4: <unknown>
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 2: /dev/pts/0
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 1: /dev/pts/0
-==26953==    <inherited from parent>
-==26953== 
-==26953== Open file descriptor 0: /dev/pts/0
-==26953==    <inherited from parent>
-==26953== 
-==26953== 
-==26953== HEAP SUMMARY:
-==26953==     in use at exit: 4,685 bytes in 77 blocks
-==26953==   total heap usage: 158 allocs, 81 frees, 6,500 bytes allocated
-==26953== 
-==26953== Searching for pointers to 77 not-freed blocks
-==26953== Checked 83,552 bytes
-==26953== 
-==26953== 1 bytes in 1 blocks are still reachable in loss record 1 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26953== 10 bytes in 1 blocks are definitely lost in loss record 2 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26953== 21 bytes in 1 blocks are still reachable in loss record 3 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26953== 21 bytes in 2 blocks are still reachable in loss record 4 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x10997D: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_split
-   fun:main
-}
-==26953== 168 bytes in 1 blocks are still reachable in loss record 5 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26953== 576 bytes in 1 blocks are still reachable in loss record 6 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26953== 3,888 bytes in 70 blocks are still reachable in loss record 7 of 7
-==26953==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26953==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26953==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26953== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26953== LEAK SUMMARY:
-==26953==    definitely lost: 10 bytes in 1 blocks
-==26953==    indirectly lost: 0 bytes in 0 blocks
-==26953==      possibly lost: 0 bytes in 0 blocks
-==26953==    still reachable: 4,675 bytes in 76 blocks
-==26953==         suppressed: 0 bytes in 0 blocks
-==26953== 
-==26953== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26953== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26965== 
-==26965== FILE DESCRIPTORS: 30 open at exit.
-==26965== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open AF_UNIX socket 31: <unknown>
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open AF_UNIX socket 25: <unknown>
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 12:
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open AF_UNIX socket 5: <unknown>
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open AF_UNIX socket 4: <unknown>
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 2: /dev/pts/0
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 1: /dev/pts/0
-==26965==    <inherited from parent>
-==26965== 
-==26965== Open file descriptor 0: /dev/pts/0
-==26965==    <inherited from parent>
-==26965== 
-==26965== 
-==26965== HEAP SUMMARY:
-==26965==     in use at exit: 4,595 bytes in 76 blocks
-==26965==   total heap usage: 168 allocs, 92 frees, 6,779 bytes allocated
-==26965== 
-==26965== Searching for pointers to 76 not-freed blocks
-==26965== Checked 83,528 bytes
-==26965== 
-==26965== 1 bytes in 1 blocks are still reachable in loss record 1 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x10951C: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26965== 10 bytes in 1 blocks are definitely lost in loss record 2 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26965== 12 bytes in 1 blocks are still reachable in loss record 3 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1094E6: ft_check_line (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x10974A: get_next_line (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1099EB: ft_gnl (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B73: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_check_line
-   fun:get_next_line
-   fun:ft_gnl
-   fun:main
-}
-==26965== 12 bytes in 1 blocks are still reachable in loss record 4 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x109CD0: ft_memalloc (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109CB6: ft_strnew (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109E33: ft_strsub (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x10997D: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_memalloc
-   fun:ft_strnew
-   fun:ft_strsub
-   fun:ft_split
-   fun:main
-}
-==26965== 96 bytes in 1 blocks are still reachable in loss record 5 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x1098AE: ft_split (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B88: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_split
-   fun:main
-}
-==26965== 576 bytes in 1 blocks are still reachable in loss record 6 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26965== 3,888 bytes in 70 blocks are still reachable in loss record 7 of 7
-==26965==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26965==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26965==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26965== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26965== LEAK SUMMARY:
-==26965==    definitely lost: 10 bytes in 1 blocks
-==26965==    indirectly lost: 0 bytes in 0 blocks
-==26965==      possibly lost: 0 bytes in 0 blocks
-==26965==    still reachable: 4,585 bytes in 75 blocks
-==26965==         suppressed: 0 bytes in 0 blocks
-==26965== 
-==26965== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26965== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==26864== 
-==26864== FILE DESCRIPTORS: 30 open at exit.
-==26864== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.6AUHlN (deleted)
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.0PKifv (deleted)
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.cAgX8c (deleted)
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open AF_UNIX socket 31: <unknown>
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open AF_UNIX socket 25: <unknown>
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 12:
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open AF_UNIX socket 5: <unknown>
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open AF_UNIX socket 4: <unknown>
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 2: /dev/pts/0
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 1: /dev/pts/0
-==26864==    <inherited from parent>
-==26864== 
-==26864== Open file descriptor 0: /dev/pts/0
-==26864==    <inherited from parent>
-==26864== 
-==26864== 
-==26864== HEAP SUMMARY:
-==26864==     in use at exit: 4,474 bytes in 72 blocks
-==26864==   total heap usage: 262 allocs, 190 frees, 11,837 bytes allocated
-==26864== 
-==26864== Searching for pointers to 72 not-freed blocks
-==26864== Checked 79,160 bytes
-==26864== 
-==26864== 10 bytes in 1 blocks are definitely lost in loss record 1 of 3
-==26864==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26864==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x108DBD: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26864== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26864== 3,888 bytes in 70 blocks are indirectly lost in loss record 2 of 3
-==26864==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26864==    by 0x109B8E: ft_strdup (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x108D79: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26864== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: indirect
-   fun:malloc
-   fun:ft_strdup
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26864== 4,464 (576 direct, 3,888 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
-==26864==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==26864==    by 0x108D35: ft_putenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x1092F5: ft_setenv (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x109099: ft_execute (in /home/user/Desktop/Minishell/minishell)
-==26864==    by 0x108B9D: main (in /home/user/Desktop/Minishell/minishell)
-==26864== 
-{
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:ft_putenv
-   fun:ft_setenv
-   fun:ft_execute
-   fun:main
-}
-==26864== LEAK SUMMARY:
-==26864==    definitely lost: 586 bytes in 2 blocks
-==26864==    indirectly lost: 3,888 bytes in 70 blocks
-==26864==      possibly lost: 0 bytes in 0 blocks
-==26864==    still reachable: 0 bytes in 0 blocks
-==26864==         suppressed: 0 bytes in 0 blocks
-==26864== 
-==26864== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==26864== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==13035== LEAK SUMMARY:
+==13035==    definitely lost: 0 bytes in 0 blocks
+==13035==    indirectly lost: 0 bytes in 0 blocks
+==13035==      possibly lost: 0 bytes in 0 blocks
+==13035==    still reachable: 322 bytes in 4 blocks
+==13035==         suppressed: 0 bytes in 0 blocks
+==13035== 
+==13035== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==13035== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12772== 
+==12772== FILE DESCRIPTORS: 30 open at exit.
+==12772== Open file descriptor 104: /snap/code/40/usr/share/code/natives_blob.bin
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 103: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 51: /dev/shm/.org.chromium.Chromium.oi0tLG (deleted)
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 50: /dev/shm/.org.chromium.Chromium.oJOjY3 (deleted)
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 49: /dev/shm/.org.chromium.Chromium.qZedbr (deleted)
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 48: /usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 47: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 46: /usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 45: /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 44: /usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 43: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 42: /usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 41: /usr/share/fonts/truetype/liberation2/LiberationSerif-Regular.ttf
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 36: /snap/code/40/usr/share/code/resources/app/node_modules.asar
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open AF_UNIX socket 31: <unknown>
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open AF_UNIX socket 25: <unknown>
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 19: /snap/code/40/usr/share/code/resources.pak
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 18: /snap/code/40/usr/share/code/locales/en-GB.pak
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 17: /snap/code/40/usr/share/code/chrome_200_percent.pak
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 16: /snap/code/40/usr/share/code/chrome_100_percent.pak
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 15: /snap/code/40/usr/share/code/natives_blob.bin
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 14: /snap/code/40/usr/share/code/v8_context_snapshot.bin
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 13: /snap/code/40/usr/share/code/icudtl.dat
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 12:
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open AF_UNIX socket 5: <unknown>
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open AF_UNIX socket 4: <unknown>
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 3: /home/user/Desktop/Minishell/valgrind-out.txt
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 2: /dev/pts/0
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 1: /dev/pts/0
+==12772==    <inherited from parent>
+==12772== 
+==12772== Open file descriptor 0: /dev/pts/0
+==12772==    <inherited from parent>
+==12772== 
+==12772== 
+==12772== HEAP SUMMARY:
+==12772==     in use at exit: 0 bytes in 0 blocks
+==12772==   total heap usage: 30 allocs, 30 frees, 939 bytes allocated
+==12772== 
+==12772== All heap blocks were freed -- no leaks are possible
+==12772== 
+==12772== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==12772== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

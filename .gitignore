@@ -1,2 +1,4 @@
 minishell
 obj
+valgrind.txt
+valgrind.sh

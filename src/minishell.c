@@ -13,12 +13,20 @@ void ft_free_double_char(char **ss)
   free(ss);
 }
 
+void sigintHandler() 
+{
+    signal(SIGINT, sigintHandler);
+    ft_putstr("\n");
+    ft_putstr("\033[1m\033[34mminishell $> \033[0m");
+}
+
 int main()
 {
   char *line;
   char **args;
   int status;
 
+  signal(SIGINT, sigintHandler);
   status = 1;
   while (status)
   {

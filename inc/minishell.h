@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <signal.h>
 # include "libft.h"
 # include "get_next_line.h"
 
