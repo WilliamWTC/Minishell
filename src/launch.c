@@ -22,8 +22,6 @@ int     ft_launch(char **args)
     else
     {
         waitpid(pid, &status, WUNTRACED);
-        while (!WIFEXITED(status) && !WIFSIGNALED(status))
-            waitpid(pid, &status, WUNTRACED);
     }
     return (1);
 }
