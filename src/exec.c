@@ -1,6 +1,6 @@
 # include "minishell.h"
 
-char *builtin_str[] = {
+char *builtin_commands[] = {
   "help",
   "cd",
   "env",
@@ -11,7 +11,7 @@ char *builtin_str[] = {
   "exit",
 };
 
-int (*builtin_func[]) (char **) = {
+int (*builtin_functions[]) (char **) = {
   &ft_help,
   &ft_cd,
   &ft_env,
@@ -23,7 +23,7 @@ int (*builtin_func[]) (char **) = {
 };
 
 int num_builtins() {
-  return sizeof(builtin_str) / sizeof(char *);
+  return sizeof(builtin_commands) / sizeof(char *);
 }
 
 int ft_help()
@@ -37,7 +37,7 @@ int ft_help()
     while(i < num_builtins())
     {
         ft_putstr("-> ");
-        ft_putendl(builtin_str[i]);
+        ft_putendl(builtin_commands[i]);
         i++;
     }
     ft_putendl("--------------------------------");
@@ -56,8 +56,8 @@ int ft_execute(char **args)
   i = 0;
   while (i < num_builtins())
   {
-    if(ft_strcmp(args[0], builtin_str[i]) == 0)
-      return (*builtin_func[i])(args);
+    if(ft_strcmp(args[0], builtin_commands[i]) == 0)
+      return (*builtin_functions[i])(args);
     i++;
   }
   path = ft_getenv("PATH");
