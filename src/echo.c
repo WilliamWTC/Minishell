@@ -25,6 +25,39 @@ char *ft_getenv(char *s)
 	return 0;
 }
 
+int ft_new_pwd(){
+	int i;
+	int environ_len;
+	char cwd[1024];
+	char *temp;
+	int j;
+
+	environ_len = ft_array_size(environ);
+	j = 0;
+	if(tmp_environ)
+		j = 1;
+	tmp_environ = (char **)malloc(sizeof(char *) * (environ_len + 1));
+	i = 0;
+	while(environ[i] != NULL)
+	{
+		if(ft_strncmp(environ[i], "OLDPWD", ft_strlen("OLDPWD")) == 0){
+			temp = ft_getenv("PWD");
+			tmp_environ[i] = ft_strjoin("OLDPWD=", temp);
+			free(temp);
+		}
+		else if (ft_strncmp(environ[i], "PWD", ft_strlen("PWD")) == 0)
+			tmp_environ[i] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
+		else
+			tmp_environ[i] = ft_strdup(environ[i]);
+		i++;
+	}
+	tmp_environ[environ_len] = NULL;
+	if (j)
+		ft_free_double_char(environ);
+	environ = tmp_environ;
+	return 1;
+}
+
 int ft_putenv(char *s)
 {
 	int i;

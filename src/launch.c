@@ -9,7 +9,8 @@ int     ft_launch(char **args)
     pid = fork();
     if(pid == 0)
     {
-        if ((temp = ft_getenv("PATH")) && ft_strncmp("/bin/", args[0], 5)){
+        if ((temp = ft_getenv("PATH")) && ft_strncmp("/bin/", args[0], 5))
+        {
             free(temp);
             temp = ft_strjoin("/bin/", args[0]);
             if(execve(temp, args, environ) == -1)
@@ -18,7 +19,9 @@ int     ft_launch(char **args)
                 ft_putstr("minishell: command not found: ");
                 ft_putendl(args[0]);
             }
-        }else{
+        }
+        else
+        {
             free(temp);
             if(execve(args[0], args, environ) == -1)
             {

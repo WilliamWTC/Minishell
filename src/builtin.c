@@ -1,5 +1,6 @@
 # include "minishell.h"
 
+/*
 int ft_cd(char **args)
 {
   char  *temp;
@@ -38,6 +39,51 @@ int ft_cd(char **args)
     {
       ft_putstr("minishell: No such file or directory\n");
     }
+  }
+  return 1;
+}
+*/
+
+int ft_cd(char **args)
+{
+  char  *temp;
+  char  *temp2;
+
+  temp = 0;
+  if (args[1] == NULL){
+    temp = ft_getenv("HOME");
+    if (chdir(temp) != 0)
+      ft_putstr("minishell: No such file or directory\n");
+    else
+      ft_new_pwd();
+    free(temp);
+  }else{
+    temp = ft_getenv("HOME");
+    if (ft_strcmp("~", args[1]) == 0){
+      if (chdir(temp) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+      else
+        ft_new_pwd();
+    }else if (args[1][0] == '~' && args[1][1] != 0){
+      temp2 = ft_strjoin(temp, &args[1][1]);
+      if (chdir(temp2) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+      else
+        ft_new_pwd();
+      free(temp2);
+    }else if (ft_strcmp("-", args[1]) == 0){
+      temp2 = ft_getenv("OLDPWD");
+      if (chdir(temp2) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+      else
+        ft_new_pwd();
+      free(temp2);
+    }else if (chdir(args[1]) != 0){
+      ft_putstr("minishell: No such file or directory\n");
+    }else{
+      ft_new_pwd();
+    }
+    free(temp);
   }
   return 1;
 }

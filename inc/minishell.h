@@ -31,3 +31,4 @@ char    *ft_getenv();
 int     ft_putenv();
 int     ft_launch();
 int     ft_execute();
+int     ft_new_pwd();
