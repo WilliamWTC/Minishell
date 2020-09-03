@@ -47,8 +47,10 @@ int ft_help()
 int ft_execute(char **args)
 {
   int i;
+  int j;
   char *path;
   char *cmd;
+  char **vars;
 
   if (args[0] == NULL)
     return 1;
@@ -65,12 +67,23 @@ int ft_execute(char **args)
   {
     cmd = ft_strjoin("/", args[0]);
     free(args[0]);
-    if(ft_strcmp("/bin", path) == 0 || ft_strcmp("/usr/bin", path) == 0)
-      args[0] = ft_strjoin(path, cmd);
-    else
+    vars = ft_strsplit(path, ':');
+    i = 0;
+    j = 0;
+    while(vars[i] != NULL)
+    {
+      if(ft_strcmp(path, vars[i]) == 0)
+      {
+        args[0] = ft_strjoin(path, cmd);
+        j++;
+      }
+      i++;
+    }
+    if(j == 0)
       args[0] = ft_strsub(cmd, 1, ft_strlen(cmd));
     free(path);
     free(cmd);
+    ft_free_double_char(vars);
   }
   return ft_launch(args);
 }
