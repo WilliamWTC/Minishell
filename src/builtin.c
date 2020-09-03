@@ -2,11 +2,43 @@
 
 int ft_cd(char **args)
 {
+  char  *temp;
+  char  *src;
+  char  *dest;
+
+  temp = 0;
   if (args[1] == NULL)
-    ft_putstr("minishell: expected argument to \"cd\"\n");
-  else 
-    if (chdir(args[1]) != 0)
+  {
+    temp = ft_getenv("HOME");
+    if (chdir(temp) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+    free(temp);
+  }
+  else
+  {
+    if(args[1][0] == '~' && args[1][1] == '/' && ft_strcmp("~", args[1]) != 0 && ft_strcmp("~/", args[1]) != 0)
+    {
+      dest = ft_strsub(args[1], 1, ft_strlen(args[1]));
+      src = ft_getenv("HOME");
+      temp = ft_strjoin(src, dest);
+      if (chdir(temp) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+      free(dest);
+      free(src);
+      free(temp);
+    }
+    else if (ft_strcmp("~", args[1]) == 0 || ft_strcmp("~/", args[1]) == 0)
+    {
+      temp = ft_getenv("HOME");
+      if (chdir(temp) != 0)
+        ft_putstr("minishell: No such file or directory\n");
+      free(temp);
+    }
+    else if (chdir(args[1]) != 0)
+    {
       ft_putstr("minishell: No such file or directory\n");
+    }
+  }
   return 1;
 }
 
