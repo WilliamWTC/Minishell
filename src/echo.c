@@ -1,4 +1,4 @@
-# include "minishell.h"
+#include "minishell.h"
 
 static void	ft_echostr(const char *str)
 {
@@ -40,7 +40,8 @@ int ft_new_pwd(){
 	i = 0;
 	while(environ[i] != NULL)
 	{
-		if(ft_strncmp(environ[i], "OLDPWD", ft_strlen("OLDPWD")) == 0){
+		if(ft_strncmp(environ[i], "OLDPWD", ft_strlen("OLDPWD")) == 0)
+		{
 			temp = ft_getenv("PWD");
 			tmp_environ[i] = ft_strjoin("OLDPWD=", temp);
 			free(temp);
