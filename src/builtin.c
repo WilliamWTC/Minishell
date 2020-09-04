@@ -1,9 +1,7 @@
 #include "minishell.h"
 
-int ft_cd(char **args)
+void  ft_set_old()
 {
-  char  *temp;
-  char  *temp2;
   char  *oldpwd;
   char  *pwd;
 
@@ -16,8 +14,16 @@ int ft_cd(char **args)
   }
   else
     free(oldpwd);
+}
+
+int ft_cd(char **args)
+{
+  char  *temp;
+  char  *temp2;
+  
   temp = 0;
   if (args[1] == NULL){
+    ft_set_old();
     temp = ft_getenv("HOME");
     if (chdir(temp) != 0)
       ft_putstr("minishell: No such file or directory\n");
@@ -27,11 +33,13 @@ int ft_cd(char **args)
   }else{
     temp = ft_getenv("HOME");
     if (ft_strcmp("~", args[1]) == 0){
+      ft_set_old();
       if (chdir(temp) != 0)
         ft_putstr("minishell: No such file or directory\n");
       else
         ft_new_pwd();
     }else if (args[1][0] == '~' && args[1][1] != 0){
+      ft_set_old();
       temp2 = ft_strjoin(temp, &args[1][1]);
       if (chdir(temp2) != 0)
         ft_putstr("minishell: No such file or directory\n");
@@ -50,6 +58,7 @@ int ft_cd(char **args)
     }else if (chdir(args[1]) != 0){
       ft_putstr("minishell: No such file or directory\n");
     }else{
+      ft_set_old();
       ft_new_pwd();
     }
     free(temp);
