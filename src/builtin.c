@@ -4,7 +4,18 @@ int ft_cd(char **args)
 {
   char  *temp;
   char  *temp2;
+  char  *oldpwd;
+  char  *pwd;
 
+  oldpwd = ft_getenv("OLDPWD");
+  if(oldpwd == NULL)
+  {
+    pwd = ft_getenv("PWD");
+    ft_old_pwd("OLDPWD", pwd);
+    free(pwd);
+  }
+  else
+    free(oldpwd);
   temp = 0;
   if (args[1] == NULL){
     temp = ft_getenv("HOME");
@@ -29,7 +40,9 @@ int ft_cd(char **args)
       free(temp2);
     }else if (ft_strcmp("-", args[1]) == 0){
       temp2 = ft_getenv("OLDPWD");
-      if (chdir(temp2) != 0)
+      if(temp2 == NULL)
+        ft_putendl("minishell: cd: OLDPWD not set");
+      else if (chdir(temp2) != 0)
         ft_putstr("minishell: No such file or directory\n");
       else
         ft_new_pwd();

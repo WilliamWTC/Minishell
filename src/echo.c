@@ -25,7 +25,27 @@ char *ft_getenv(char *s)
 	return 0;
 }
 
-int ft_new_pwd(){
+void ft_old_pwd(char *s1, char *s2)
+{
+	char *var;
+	char *oldpwd;
+
+	oldpwd = ft_getenv("OLDPWD");
+	if(oldpwd == NULL)
+	{
+    	var = (char *)malloc(sizeof(var) * (ft_strlen(s1) + ft_strlen(s2 + 2)));
+    	ft_strcpy(var, s1);
+    	ft_strcat(var, "=");
+    	ft_strcat(var, s2);
+    	ft_putenv(var);
+	}
+	else
+		free(oldpwd);
+    free(var);
+}
+
+int ft_new_pwd()
+{
 	int i;
 	int environ_len;
 	char cwd[1024];
