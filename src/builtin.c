@@ -118,9 +118,14 @@ int ft_unsetenv(char **args)
   ep = environ;
   while(*ep != NULL)
   {
-    if (ft_strncmp(*ep, args[1], len) == 0 && (*ep)[len] == '=')
-      for (sp = ep; *sp != NULL; sp++)
+    if (ft_strncmp(*ep, args[1], len) == 0 && (*ep)[len] == '='){
+      sp = ep;
+      while (*sp != NULL)
+      {
         *sp = *(sp + 1);
+        sp++;
+      }
+    }
     else
       ep++;
   }
